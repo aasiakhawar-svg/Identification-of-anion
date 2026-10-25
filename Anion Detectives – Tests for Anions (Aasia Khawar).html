@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anion Detectives – Tests for Anions | Aasia Khawar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#10204a;--bg:#eef3ff;--card:#fff;--line:#cfdaf6;--v:#5b4bff;--t:#0fb5a5;--p:#ff4f8b;--g:#f5b800;--soft:#e4ebff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#eaf0ff;--bg:#0a1230;--card:#142251;--line:#2c3d78;--soft:#1c2d66}}
+:root[data-theme="dark"]{--ink:#eaf0ff;--bg:#0a1230;--card:#142251;--line:#2c3d78;--soft:#1c2d66}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Nunito,system-ui,sans-serif}
+h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif;font-weight:700;margin:0}
+header{background:linear-gradient(120deg,#5b4bff,#0fb5a5 70%,#f5b800);color:#fff;padding:18px 20px 14px;text-align:center}
+header h1{font-size:clamp(26px,5vw,40px);letter-spacing:.2px}header p{margin:2px 0 10px;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+nav button{font:700 15px Fredoka,sans-serif;border:2px solid #fff8;background:#ffffff22;color:#fff;border-radius:999px;padding:7px 15px;cursor:pointer;transition:.2s}
+nav button:hover{background:#ffffff44}nav button.on{background:#fff;color:#3b2fd0;border-color:#fff}
+button:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+main{max-width:1060px;margin:0 auto;padding:20px 16px 8px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center}
+.hero h2{font-size:clamp(24px,4vw,34px);line-height:1.15;margin-bottom:8px}
+.btn{font:700 16px Fredoka,sans-serif;border:0;border-radius:12px;padding:10px 20px;cursor:pointer;color:#fff;background:var(--v);margin:6px 8px 0 0;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}.btn.alt{background:var(--p)}.btn.sm{padding:8px 14px;font-size:15px}.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.stage{display:flex;flex-direction:column;align-items:center;gap:8px}
+.big{width:96px;height:230px;border:5px solid var(--ink);border-top:0;border-radius:0 0 48px 48px;position:relative;overflow:hidden;background:#7dd3fc44}
+.big i{position:absolute;left:0;right:0;bottom:0;height:0;background:#fff;transition:background 1s,height 1.6s ease-in}
+.big b{position:absolute;left:50%;top:-4px;width:12px;height:12px;border-radius:50%;background:var(--ink);margin-left:-6px;opacity:0}
+.big.go b{animation:dr .9s ease-in}@keyframes dr{0%{opacity:1;top:0}100%{opacity:.3;top:110px}}
+.tag{font:700 20px Fredoka,sans-serif;min-height:30px}
+.ions{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0}
+.ion{text-align:center;cursor:pointer;transition:transform .2s;font:inherit;color:inherit}.ion:hover{transform:translateY(-4px) rotate(-1deg)}
+.ion .sw{width:46px;height:46px;border-radius:50%;margin:0 auto 6px;border:3px solid var(--ink)}
+.ion h3{font-size:22px}.ion p{margin:2px 0 0;font-size:14px}
+.steps3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.steps3 .card h3{color:var(--v)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid h3{font-size:19px;margin-bottom:6px}.grid small{font:400 13px Nunito;opacity:.7}
+svg{width:100%;height:auto;display:block;color:var(--ink)}svg text{fill:var(--ink);font:700 12px Fredoka,sans-serif}
+canvas{width:100%;height:auto;border-radius:12px;background:linear-gradient(#7dd3fc33,#38bdf855)}
+.steps{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.chips{display:flex;gap:8px;margin:8px 0 14px}.chips button{font:700 16px Fredoka;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 16px;cursor:pointer}.chips button.on{background:var(--ink);color:var(--bg)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;margin-top:8px}.leg i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+.eq{margin-top:16px;border-color:var(--t);animation:pop .5s}.eq p{margin:4px 0;font-size:17px}.eq .io{font:700 20px Fredoka;color:var(--v)}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:none;opacity:1}}
+.notes{margin-top:16px;background:var(--soft);border-radius:16px;padding:14px 18px 6px}.notes li{margin:0 0 8px}
+sup,sub{line-height:0}
+table{width:100%;border-collapse:collapse;font-size:15px}th{background:var(--v);color:#fff;font-family:Fredoka;padding:8px;text-align:left}td{border-bottom:2px solid var(--line);padding:8px;vertical-align:top}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);vertical-align:-2px;margin-right:5px}
+.opt{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0;cursor:pointer;transition:.15s}
+.opt:hover:not(:disabled){border-color:var(--v);transform:translateX(4px)}.opt.ok{background:#16a34a;color:#fff;border-color:#16a34a;animation:pop .4s}.opt.no{background:#e11d48;color:#fff;border-color:#e11d48}
+.bar{height:10px;background:var(--soft);border-radius:9px;overflow:hidden;margin-bottom:12px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--v),var(--t));transition:width .5s}
+.fb{min-height:48px;font-weight:700}
+footer{text-align:center;padding:18px 12px 24px;font-size:14px;opacity:.85}footer b{font-family:Fredoka;color:var(--v)}
+@media(max-width:760px){.hero,.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header><h1>🧪 Anion Detectives</h1><p>Tests for Cl<sup>−</sup>, Br<sup>−</sup>, I<sup>−</sup>, SO<sub>4</sub><sup>2−</sup> and CO<sub>3</sub><sup>2−</sup> · Edexcel IGCSE Chemistry · Spec 2.48</p>
+<nav id="nav"><button data-t="home">Case file</button><button data-t="halides">Halides</button><button data-t="sulfate">Sulfate</button><button data-t="carbonate">Carbonate</button><button data-t="quiz">Solve it</button><button data-t="summary">Cheat sheet</button></nav></header>
+<main>
+<section id="home">
+<div class="hero card"><div><h2>Same Na<sup>+</sup>. Different anion. One reagent solves the case.</h2>
+<p>Five colourless bottles, no labels. Watch each test happen, see the ions meet inside the tube, write the equation, then prove you can name the ion.</p>
+<button class="btn" data-go="halides">Start the case</button><button class="btn alt" data-go="quiz">Test yourself</button></div>
+<div class="stage"><div class="big" id="big"><b></b><i></i></div><div class="tag" id="tag">Add acidified AgNO<sub>3</sub></div></div></div>
+<div class="ions">
+<button class="card ion" data-go="halides"><div class="sw" style="background:#f8fafc"></div><h3>Cl<sup>−</sup></h3><p>White precipitate with acidified AgNO<sub>3</sub></p></button>
+<button class="card ion" data-go="halides"><div class="sw" style="background:#f2dfa0"></div><h3>Br<sup>−</sup></h3><p>Cream precipitate with acidified AgNO<sub>3</sub></p></button>
+<button class="card ion" data-go="halides"><div class="sw" style="background:#f7dc3a"></div><h3>I<sup>−</sup></h3><p>Yellow precipitate with acidified AgNO<sub>3</sub></p></button>
+<button class="card ion" data-go="sulfate"><div class="sw" style="background:#fff"></div><h3>SO<sub>4</sub><sup>2−</sup></h3><p>White precipitate with acidified BaCl<sub>2</sub></p></button>
+<button class="card ion" data-go="carbonate"><div class="sw" style="background:linear-gradient(#a5f3fc,#fff)"></div><h3>CO<sub>3</sub><sup>2−</sup></h3><p>HCl fizzes; CO<sub>2</sub> turns limewater milky</p></button></div>
+<div class="steps3"><div class="card"><h3>1 · Watch</h3><p>Drop in the reagents and watch the tube and the particles.</p></div><div class="card"><h3>2 · Write</h3><p>The ionic equation appears – copy it with state symbols.</p></div><div class="card"><h3>3 · Solve</h3><p>Eight questions with instant feedback. Q8 is your exit ticket.</p></div></div>
+</section>
+
+<section id="lab" hidden>
+<h2 id="lt"></h2><p id="ls" style="margin:4px 0"></p>
+<div class="chips" id="chips"></div>
+<div class="grid"><div class="card"><h3>Lab bench</h3><svg id="bench" viewBox="0 0 300 270" role="img" aria-label="Test tube experiment"></svg><div class="steps" id="steps"></div></div>
+<div class="card"><h3>Inside the tube <small>particle view</small></h3><canvas id="cv" width="720" height="520"></canvas><div class="leg" id="leg"></div></div></div>
+<div class="card eq" id="eq" hidden></div>
+<div class="notes"><h3>Detective notes</h3><ul id="notes"></ul></div>
+</section>
+
+<section id="quiz" hidden><div class="card"><h2>Solve it</h2><div class="bar"><i id="qb"></i></div><div id="qa"></div></div></section>
+
+<section id="summary" hidden><div class="card"><h2 style="margin-bottom:10px">Cheat sheet</h2>
+<div style="overflow-x:auto"><table><tr><th>Ion</th><th>Test</th><th>Positive result</th><th>Ionic equation</th></tr>
+<tr><td>Cl<sup>−</sup></td><td>Dilute HNO<sub>3</sub>, then AgNO<sub>3</sub>(aq)</td><td><span class="dot" style="background:#f8fafc"></span>white precipitate</td><td>Ag<sup>+</sup>(aq) + Cl<sup>−</sup>(aq) → AgCl(s)</td></tr>
+<tr><td>Br<sup>−</sup></td><td>Dilute HNO<sub>3</sub>, then AgNO<sub>3</sub>(aq)</td><td><span class="dot" style="background:#f2dfa0"></span>cream precipitate</td><td>Ag<sup>+</sup>(aq) + Br<sup>−</sup>(aq) → AgBr(s)</td></tr>
+<tr><td>I<sup>−</sup></td><td>Dilute HNO<sub>3</sub>, then AgNO<sub>3</sub>(aq)</td><td><span class="dot" style="background:#f7dc3a"></span>yellow precipitate</td><td>Ag<sup>+</sup>(aq) + I<sup>−</sup>(aq) → AgI(s)</td></tr>
+<tr><td>SO<sub>4</sub><sup>2−</sup></td><td>Dilute HCl, then BaCl<sub>2</sub>(aq)</td><td><span class="dot" style="background:#fff"></span>white precipitate</td><td>Ba<sup>2+</sup>(aq) + SO<sub>4</sub><sup>2−</sup>(aq) → BaSO<sub>4</sub>(s)</td></tr>
+<tr><td>CO<sub>3</sub><sup>2−</sup></td><td>Dilute HCl; test the gas with limewater</td><td><span class="dot" style="background:#a5f3fc"></span>fizzing; limewater turns milky</td><td>CO<sub>3</sub><sup>2−</sup>(aq) + 2H<sup>+</sup>(aq) → H<sub>2</sub>O(l) + CO<sub>2</sub>(g)</td></tr></table></div>
+<div class="notes" style="margin-top:14px"><h3>Exam tips</h3><ul><li>Halide colours deepen down the group: <b>white → cream → yellow</b>.</li><li>Acidify the silver test with <b>nitric</b> acid, never HCl. Acidify the barium test with HCl.</li><li>Say “limewater turns milky (cloudy)” and name the gas “carbon dioxide”.</li></ul></div></div></section>
+</main>
+<footer>© 2026 <b>Aasia Khawar</b> · Made by Aasia Khawar · All rights reserved · Edexcel IGCSE Chemistry 4CH1</footer>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],NS='http://www.w3.org/2000/svg';
+const X={Cl:{n:'Cl⁻',h:'Cl<sup>−</sup>',ion:'#22c55e',ppt:'#f8fafc',nm:'white'},Br:{n:'Br⁻',h:'Br<sup>−</sup>',ion:'#b45309',ppt:'#f2dfa0',nm:'cream'},I:{n:'I⁻',h:'I<sup>−</sup>',ion:'#8b5cf6',ppt:'#f7dc3a',nm:'yellow'}};
+let cur='home',ion='Cl',timers=[];
+/* ---------- particle simulation ---------- */
+class Sim{constructor(cv){this.cv=cv;this.x=cv.getContext('2d');this.x.scale(2,2);this.W=360;this.H=260;requestAnimationFrame(()=>this.tick())}
+set(c){this.c=c;this.go=0;this.P=[];const r=(a,b)=>a+Math.random()*(b-a),mk=(o,t)=>({...o,t,x:r(30,330),y:r(30,150),vx:r(-.7,.7)||.4,vy:r(-.7,.7)||.4});
+for(let i=0;i<6;i++){const a=mk(c.a,'a'),b=mk(c.b,'b');a.i=b.i=i;this.P.push(a,b)}
+for(let i=0;i<5;i++)this.P.push(mk({lab:c.s[0],col:'#94a3b8',r:10,s:1},'s'),mk({lab:c.s[1],col:'#94a3b8',r:12,s:1},'s'))}
+react(){this.go=1;for(const p of this.P){if(p.s)continue;const bx=70+(p.i%3)*95,by=222-(p.i/3|0)*40;if(this.c.mode=='ppt'){p.tx=p.t=='a'?bx:bx+p.r+14;p.ty=by}}}
+step(p){if(this.go&&!p.s){if(this.c.mode=='ppt'){p.x+=(p.tx-p.x)*.035;p.y+=(p.ty-p.y)*.035;p.set=Math.hypot(p.tx-p.x,p.ty-p.y)<3;return}
+if(p.t=='a'){const b=this.P.find(q=>q.t=='b'&&q.i==p.i);p.x+=(b.x-p.x)*.05;p.y+=(b.y-p.y)*.05;if(Math.hypot(b.x-p.x,b.y-p.y)<12&&!b.up){b.up=1;b.lab='CO₂';b.col='#64748b';b.r=14;p.dead=1}return}
+if(p.up){p.y-=1.1;p.x+=Math.sin(p.y/14)*.8;if(p.y<-20)p.dead=1;return}}
+p.x+=p.vx;p.y+=p.vy;if(p.x<p.r||p.x>this.W-p.r)p.vx*=-1;if(p.y<p.r||p.y>this.H-p.r)p.vy*=-1}
+tick(){const x=this.x;if(this.cv.offsetParent&&this.P){x.clearRect(0,0,this.W,this.H);const ink=getComputedStyle(document.documentElement).getPropertyValue('--ink');
+this.P.forEach(p=>{if(!p.dead)this.step(p)});
+if(this.c.mode=='ppt')for(const a of this.P)if(a.t=='a'&&a.set){const b=this.P.find(q=>q.t=='b'&&q.i==a.i);if(b.set){x.fillStyle=this.c.ppt;x.strokeStyle=ink;x.globalAlpha=.9;x.beginPath();x.roundRect(a.x-a.r-5,a.y-19,a.r+b.r+40,38,10);x.fill();x.stroke();x.globalAlpha=1}}
+for(const p of this.P){if(p.dead)continue;x.globalAlpha=p.s?.6:1;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fillStyle=p.col;x.fill();x.fillStyle=p.s?ink:'#fff';x.font='700 10px Fredoka,system-ui';x.textAlign='center';x.textBaseline='middle';x.fillText(p.lab,p.x,p.y);x.globalAlpha=1}}
+requestAnimationFrame(()=>this.tick())}}
+const sim=new Sim($('#cv'));
+/* ---------- bench drawing ---------- */
+const tube=(cx,id,liq,top)=>`<defs><clipPath id="k${id}"><path d="M${cx-30} 40V200a30 30 0 0 0 60 0V40z"/></clipPath></defs><g clip-path="url(#k${id})"><rect x="${cx-30}" y="${top}" width="60" height="200" fill="${liq}" opacity=".5"/><rect id="cl${id}" x="${cx-30}" y="${top}" width="60" height="200" fill="#fff" opacity="0" style="transition:opacity 1.4s"/><rect id="sd${id}" x="${cx-30}" y="188" width="60" height="50" fill="#fff" style="transform:scaleY(0);transform-box:fill-box;transform-origin:50% 100%;transition:transform 2.4s ease-in"/></g><path d="M${cx-30} 40V200a30 30 0 0 0 60 0V40" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>`;
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);$('#bench').appendChild(e);return e}
+function drops(cx,col){for(let i=0;i<6;i++)timers.push(setTimeout(()=>{const c=el('circle',{cx:cx+(i%2?3:-3),cy:26,r:4.5,fill:col});c.animate([{transform:'translateY(0)'},{transform:'translateY(105px)',opacity:.8}],{duration:600,easing:'ease-in'}).onfinish=()=>c.remove()},i*170))}
+function fizz(cx,y0,ms,top){const t=setInterval(()=>{const c=el('circle',{cx:cx+(Math.random()*40-20),cy:y0,r:2+Math.random()*3,fill:'#fff',stroke:'#38bdf8'});c.animate([{transform:'translateY(0)',opacity:1},{transform:`translateY(-${y0-top}px)`,opacity:0}],{duration:1200}).onfinish=()=>c.remove()},110);timers.push(t);timers.push(setTimeout(()=>clearInterval(t),ms))}
+const label=t=>{$('#rl').textContent=t};
+const fill=(id,col,o)=>{$('#cl'+id).setAttribute('fill',col);$('#cl'+id).style.opacity=o};
+function ppt(col){fill(1,col,.85);const s=$('#sd1');s.setAttribute('fill',col);s.style.transform='scaleY(1)';timers.push(setTimeout(()=>$('#cl1').style.opacity=.25,2600))}
+/* ---------- scene data ---------- */
+const NOTES={halides:['Acidify with dilute <b>nitric</b> acid first. It removes carbonate and hydroxide ions that would give a false precipitate.','Never use HCl here – it adds Cl<sup>−</sup> ions and fakes a white result.','Colours deepen down Group 7: <b>white → cream → yellow</b>.','Na<sup>+</sup> and NO<sub>3</sub><sup>−</sup> are spectator ions: they never join the precipitate.'],
+sulfate:['Acidify with dilute <b>hydrochloric</b> acid first. It removes carbonate ions that would form white BaCO<sub>3</sub>.','Barium sulfate is insoluble – remember the solubility rules (spec 2.34).','Teacher demo only: barium compounds are toxic.'],
+carbonate:['Fizzing alone is not proof – <b>identify the gas</b>.','CO<sub>2</sub> turns limewater milky because insoluble CaCO<sub>3</sub> forms.','Write “carbon dioxide”, not “carbon”.']};
+function cfg(k){if(k=='halides'){const i=X[ion];return{a:{lab:'Ag⁺',col:'#94a3b8',r:12},b:{lab:i.n,col:i.ion,r:14},s:['Na⁺','NO₃⁻'],mode:'ppt',ppt:i.ppt,leg:[['#94a3b8','Ag<sup>+</sup>'],[i.ion,i.h],['#94a3b855','Na<sup>+</sup>, NO<sub>3</sub><sup>−</sup> spectators']]}}
+if(k=='sulfate')return{a:{lab:'Ba²⁺',col:'#16a34a',r:13},b:{lab:'SO₄²⁻',col:'#f97316',r:16},s:['Na⁺','Cl⁻'],mode:'ppt',ppt:'#f8fafc',leg:[['#16a34a','Ba<sup>2+</sup>'],['#f97316','SO<sub>4</sub><sup>2−</sup>'],['#94a3b855','Na<sup>+</sup>, Cl<sup>−</sup> spectators']]}
+return{a:{lab:'H⁺',col:'#ef4444',r:10},b:{lab:'CO₃²⁻',col:'#0ea5e9',r:16},s:['Na⁺','Cl⁻'],mode:'gas',leg:[['#ef4444','H<sup>+</sup>'],['#0ea5e9','CO<sub>3</sub><sup>2−</sup>'],['#64748b','CO<sub>2</sub> gas escapes']]}}
+function eqs(k){if(k=='halides'){const i=X[ion],s=ion;return`<h3>Write it</h3><p>AgNO<sub>3</sub>(aq) + Na${s}(aq) → Ag${s}(s) + NaNO<sub>3</sub>(aq)</p><p class="io">Ag<sup>+</sup>(aq) + ${i.h}(aq) → Ag${s}(s)</p><p>Observation: <b>${i.nm} precipitate</b></p>`}
+if(k=='sulfate')return`<h3>Write it</h3><p>BaCl<sub>2</sub>(aq) + Na<sub>2</sub>SO<sub>4</sub>(aq) → BaSO<sub>4</sub>(s) + 2NaCl(aq)</p><p class="io">Ba<sup>2+</sup>(aq) + SO<sub>4</sub><sup>2−</sup>(aq) → BaSO<sub>4</sub>(s)</p><p>Observation: <b>white precipitate</b></p>`;
+return`<h3>Write it</h3><p>Na<sub>2</sub>CO<sub>3</sub>(s) + 2HCl(aq) → 2NaCl(aq) + H<sub>2</sub>O(l) + CO<sub>2</sub>(g)</p><p class="io">CO<sub>3</sub><sup>2−</sup>(aq) + 2H<sup>+</sup>(aq) → H<sub>2</sub>O(l) + CO<sub>2</sub>(g)</p><p>Gas test: CO<sub>2</sub>(g) + Ca(OH)<sub>2</sub>(aq) → CaCO<sub>3</sub>(s) + H<sub>2</sub>O(l)</p><p>Observation: <b>limewater turns milky</b></p>`}
+function load(k){cur=k;timers.forEach(t=>{clearTimeout(t);clearInterval(t)});timers=[];$('#eq').hidden=true;
+const T={halides:['Halides: Cl⁻, Br⁻, I⁻','Acidified silver nitrate tells the three apart by colour.'],sulfate:['Sulfate: SO₄²⁻','Acidified barium chloride gives a dense white precipitate.'],carbonate:['Carbonate: CO₃²⁻','Add acid, catch the gas, test it with limewater.']}[k];
+$('#lt').textContent=T[0];$('#ls').textContent=T[1];
+$('#chips').innerHTML=k=='halides'?Object.keys(X).map(s=>`<button data-i="${s}" class="${s==ion?'on':''}">${X[s].h} ${X[s].nm}</button>`).join(''):'';
+const c=cfg(k);let b='',st=[];
+if(k=='carbonate'){b=tube(80,1,'#fff0',120)+tube(220,2,'#a5f3fc',110)+`<path d="M80 40V16H220V150" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path id="gf" d="M80 40V16H220V150" fill="none" stroke="#0fb5a5" stroke-width="4" stroke-dasharray="6 10" opacity="0"/><text x="80" y="258" text-anchor="middle">Na₂CO₃ + HCl</text><text x="220" y="258" text-anchor="middle">Limewater</text><text id="rl" x="150" y="8" text-anchor="middle"></text>`;
+st=[['1 Add dilute HCl',()=>{label('dilute HCl');drops(80,'#fca5a5');fizz(80,190,7000,90);timers.push(setTimeout(()=>sim.react(),700))}],['2 Pass gas into limewater',()=>{label('CO₂ gas');$('#gf').style.opacity=1;$('#gf').animate([{strokeDashoffset:0},{strokeDashoffset:-160}],{duration:2500,iterations:3});timers.push(setTimeout(()=>{fizz(220,150,4500,90);fill(2,'#fff',.85)},1200));timers.push(setTimeout(()=>{$('#eq').innerHTML=eqs(k);$('#eq').hidden=false},3000))}]]}
+else{const o=k=='halides'?['dilute HNO₃','AgNO₃(aq)','#fde68a','#cbd5e1']:['dilute HCl','BaCl₂(aq)','#fde68a','#d9f99d'];
+b=tube(150,1,k=='halides'?'#7dd3fc':'#7dd3fc',110)+`<text x="150" y="258" text-anchor="middle">${k=='halides'?'NaX(aq)':'Na₂SO₄(aq)'}</text><text id="rl" x="150" y="12" text-anchor="middle"></text>`;
+st=[['1 Add '+o[0],()=>{label(o[0]);drops(150,o[2])}],['2 Add '+o[1],()=>{label(o[1]);drops(150,o[3]);timers.push(setTimeout(()=>{ppt(c.ppt);sim.react()},900));timers.push(setTimeout(()=>{$('#eq').innerHTML=eqs(k);$('#eq').hidden=false},2200))}]]}
+$('#bench').innerHTML=b;if(k=='carbonate'){const s=$('#sd1');s.setAttribute('fill','#fff');s.style.transform='scaleY(.5)'}
+$('#steps').innerHTML=st.map((s,i)=>`<button class="btn sm" data-s="${i}" ${i?'disabled':''}>${s[0]}</button>`).concat('<button class="btn sm alt" data-s="r">↺ Reset</button>').join('');
+$$('#steps button').forEach(bt=>bt.onclick=()=>{const v=bt.dataset.s;if(v=='r')return load(k);st[v][1]();bt.disabled=true;const n=$('#steps [data-s="'+(+v+1)+'"]');if(n)n.disabled=false});
+$('#leg').innerHTML=c.leg.map(l=>`<span><i style="background:${l[0]}"></i>${l[1]}</span>`).join('');
+$('#notes').innerHTML=NOTES[k].map(n=>`<li>${n}</li>`).join('');sim.set(c)}
+$('#chips').onclick=e=>{const i=e.target.dataset.i;if(i){ion=i;load('halides')}};
+/* ---------- quiz ---------- */
+const Q=[["Which reagents test for chloride, bromide and iodide ions?",["Acidified silver nitrate solution","Acidified barium chloride solution","Hydrochloric acid and limewater","Sodium hydroxide solution"],"Silver ions form insoluble silver halides, so acidified AgNO₃ is the halide test."],
+["A cream precipitate forms with acidified silver nitrate. Which ion is present?",["Br⁻","Cl⁻","I⁻","SO₄²⁻"],"White = chloride, cream = bromide, yellow = iodide."],
+["What is the positive result for sulfate ions?",["White precipitate with acidified barium chloride","Yellow precipitate with acidified silver nitrate","Gas that turns limewater milky","Blue precipitate with sodium hydroxide"],"Ba²⁺ + SO₄²⁻ → BaSO₄(s), a white precipitate."],
+["Dilute HCl makes a solid fizz. What proves it is a carbonate?",["The gas turns limewater milky","Silver nitrate gives a precipitate","The solid melts when heated","Barium chloride gives a precipitate"],"Fizzing alone is not enough – CO₂ must turn limewater milky."],
+["Why is nitric acid, not hydrochloric acid, used in the silver nitrate test?",["HCl adds Cl⁻ ions and gives a false white precipitate","HCl is too weak an acid","Nitric acid is a catalyst","HCl reacts with silver nitrate to make a gas"],"Extra Cl⁻ from HCl would form AgCl and fake a chloride result."],
+["Which is the correct ionic equation for the bromide test?",["Ag⁺(aq) + Br⁻(aq) → AgBr(s)","Ag⁺(aq) + Br⁻(aq) → AgBr(aq)","AgNO₃(aq) + Br⁻(aq) → AgBr(s)","Ag(s) + Br⁻(aq) → AgBr(s)"],"Ionic equations show only the reacting ions, with correct state symbols."],
+["Unlabelled solutions: NaCl, Na₂SO₄ and NaI. What is the best first test?",["Acidified AgNO₃: white = Cl⁻, yellow = I⁻, none = SO₄²⁻","Add limewater to all three","Add NaOH to all three","Heat all three"],"One reagent sorts all three. Confirm sulfate with acidified BaCl₂."],
+["Exit ticket – Solution Y gives a white precipitate with acidified BaCl₂ and a yellow one with acidified AgNO₃. Which anions are in Y?",["Sulfate and iodide","Chloride and carbonate","Sulfate and chloride","Bromide and carbonate"],"White BaSO₄ shows sulfate; yellow AgI shows iodide."]];
+let qi=0,sc=0;
+function ask(){const q=Q[qi];$('#qb').style.width=(qi/Q.length*100)+'%';const o=q[1].map((t,i)=>[t,i==0]).sort(()=>Math.random()-.5);
+$('#qa').innerHTML=`<p class="f" style="font-size:19px">Q${qi+1}. ${q[0]}</p>`+o.map((x,i)=>`<button class="opt" data-ok="${x[1]?1:0}">${x[0]}</button>`).join('')+`<p class="fb" id="fb"></p><button class="btn" id="nx" hidden>${qi==Q.length-1?'See my score':'Next question'}</button>`;
+$$('.opt').forEach(b=>b.onclick=()=>{$$('.opt').forEach(x=>{x.disabled=true;if(x.dataset.ok=='1')x.classList.add('ok')});const ok=b.dataset.ok=='1';if(ok)sc++;else b.classList.add('no');
+$('#fb').innerHTML=(ok?'✨ Correct! ':'Not quite. ')+q[2];$('#nx').hidden=false;$('#nx').onclick=()=>{qi++;qi<Q.length?ask():end()}})}
+function end(){$('#qb').style.width='100%';const m=sc>=7?'Master detective! 🕵️':sc>=5?'Great work – review the cheat sheet for the rest.':'Keep going – rewatch the three tests and try again.';
+$('#qa').innerHTML=`<h2>${sc} / ${Q.length}</h2><p class="f" style="font-size:20px">${m}</p><button class="btn" id="again">Try again</button>`;$('#again').onclick=()=>{qi=0;sc=0;ask()}}
+/* ---------- navigation + hero ---------- */
+function go(k){$$('section').forEach(s=>s.hidden=true);const id=NOTES[k]?'lab':k;$('#'+id).hidden=false;$$('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t==k));if(NOTES[k])load(k);if(k=='quiz'){qi=0;sc=0;ask()}scrollTo(0,0)}
+$$('[data-t],[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.t||b.dataset.go));
+const H=[['Cl⁻ → white','#f8fafc'],['Br⁻ → cream','#f2dfa0'],['I⁻ → yellow','#f7dc3a']];let hi=0;
+function hero(){const big=$('#big'),i=big.querySelector('i');big.classList.remove('go');void big.offsetWidth;big.classList.add('go');const h=H[hi%3];$('#tag').textContent=h[0];setTimeout(()=>{i.style.background=h[1];i.style.height='42%'},700);setTimeout(()=>{i.style.height='0'},3000);hi++}
+hero();setInterval(hero,3600);
+const t=location.hash.slice(1);go(['halides','sulfate','carbonate','quiz','summary'].includes(t)?t:'home');
+</script></body></html>
